@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TODO contenu : adapter le titre et la description avec tes mots-clés (SEO) -->
+  <title>Prénom Nom — Portfolio · Étudiant BUT Informatique</title>
+  <meta name="description" content="Portfolio de Prénom Nom, étudiant en 3e année de BUT Informatique : projets, compétences, parcours et contact.">
+  <meta name="keywords" content="portfolio, BUT informatique, développeur, stage, alternance">
+  <meta name="author" content="Prénom Nom">
+  <meta property="og:title" content="Prénom Nom — Portfolio">
+  <meta property="og:description" content="Étudiant en 3e année de BUT Informatique. Découvrez ma playlist de projets.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0e13" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Applique le thème avant l'affichage pour éviter un flash -->
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- ============ EN-TÊTE / MENU ============ -->
+  <header class="header" id="haut">
+    <div class="header__inner">
+      <a class="logo" href="#accueil" aria-label="Retour à l'accueil">
+        <span class="logo__disc" aria-hidden="true"></span>
+        <span class="logo__text">Prénom Nom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+
+      <nav class="nav" id="menu" aria-label="Menu principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#a-propos"><span class="nav__num">01</span>À propos</a></li>
+          <li><a class="nav__link" href="#projets"><span class="nav__num">02</span>Projets</a></li>
+          <li><a class="nav__link" href="#competences"><span class="nav__num">03</span>Compétences</a></li>
+          <li><a class="nav__link" href="#parcours"><span class="nav__num">04</span>Parcours</a></li>
+          <li><a class="nav__link" href="#veille"><span class="nav__num">05</span>Veille</a></li>
+          <li><a class="nav__link" href="#contact"><span class="nav__num">06</span>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-label="Passer en thème clair">
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1.5 12h3M19.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- ============ ACCUEIL (pochette d'album) ============ -->
+    <section class="hero" id="accueil" data-track="Intro" data-hue="275" aria-labelledby="hero-titre">
+      <!-- Mur de pochettes qui défilent en fond (généré par js/main.js) -->
+      <div class="hero__wall" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__art" aria-hidden="true">
+          <div class="vinyl"><span class="vinyl__label">PN</span></div>
+          <div class="sleeve">
+            <span class="sleeve__title">Prénom<br>Nom</span>
+            <span class="sleeve__sub">BUT Info · Vol. 3</span>
+          </div>
+        </div>
+
+        <div class="hero__text">
+          <p class="kicker">Album · Sortie 2026</p>
+          <h1 class="hero__title" id="hero-titre">Prénom <em>Nom</em></h1>
+          <!-- TODO contenu : une phrase d'accroche claire, sans jargon -->
+          <p class="hero__lead">Étudiant en 3<sup>e</sup> année de <strong>BUT Informatique</strong>. Phrase d'accroche à venir : ce que je fais, ce que je cherche (stage, alternance…).</p>
+          <p class="hero__meta">6 pistes · <span class="hl">À la recherche d'un stage</span></p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projets">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+              Écouter mes projets
+            </a>
+            <a class="btn btn--ghost" href="assets/cv.pdf" download>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+              Télécharger mon CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 · À PROPOS ============ -->
+    <section class="section" id="a-propos" data-track="À propos" data-hue="175" aria-labelledby="titre-a-propos">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Piste 01 · Notes de pochette</p>
+          <h2 id="titre-a-propos">À propos</h2>
+        </header>
+
+        <div class="about">
+          <div class="about__photo">
+            <!-- TODO contenu : remplacer par <img src="assets/photo.webp" alt="Photo de Prénom Nom" width="480" height="480" loading="lazy"> -->
+            <div class="placeholder-photo" role="img" aria-label="Emplacement de la photo">
+              <span>Ta photo ici</span>
+            </div>
+          </div>
+
+          <div class="about__text">
+            <!-- TODO contenu : texte à la 1re personne, ton sérieux, un clin d'œil possible -->
+            <p class="lead">Premier paragraphe essentiel : qui je suis en deux ou trois phrases, ce qui m'anime dans l'informatique.</p>
+            <p>Deuxième paragraphe : une idée par paragraphe, l'idée principale au début. Ce que j'aime construire, comment je travaille.</p>
+            <p>Troisième paragraphe : en dehors du code (musique, cinéma…), et un petit clin d'œil sans en faire trop.</p>
+
+            <ul class="facts">
+              <li><span class="facts__label">Formation</span><span>BUT Informatique · IUT de …</span></li>
+              <li><span class="facts__label">Recherche</span><span>Stage de S6 · à partir de …</span></li>
+              <li><span class="facts__label">Localisation</span><span>Ville, mobilité …</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 · PROJETS (playlist) ============ -->
+    <section class="section" id="projets" data-track="Projets" data-hue="275" aria-labelledby="titre-projets">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Piste 02 · Playlist</p>
+          <h2 id="titre-projets">Projets</h2>
+          <p class="section__intro">Mes meilleurs projets. Cliquez sur un titre pour ouvrir sa fiche complète.</p>
+        </header>
+
+        <div class="playlist" role="region" aria-label="Liste des projets">
+          <div class="playlist__head" aria-hidden="true">
+            <span>#</span><span>Titre</span><span class="col-hide">Cadre</span><span class="col-hide-sm">Technologies</span><span>Année</span>
+          </div>
+
+          <ol class="playlist__list">
+            <!-- ===== Projet 1 : le stage (obligatoire) ===== -->
+            <li class="track" data-hue="275">
+              <button class="track__btn" type="button" aria-haspopup="dialog">
+                <span class="track__num"><span class="track__index">1</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
+                <span class="track__main">
+                  <span class="cover cover--sm" aria-hidden="true">S4</span>
+                  <span>
+                    <span class="track__title">Nom du projet de stage <span class="badge">Single</span></span>
+                    <span class="track__artist">Stage · Entreprise</span>
+                  </span>
+                </span>
+                <span class="track__album col-hide">Stage de S4</span>
+                <span class="track__tags col-hide-sm">Techno · Techno</span>
+                <span class="track__time">2025</span>
+              </button>
+
+              <div class="track__details" hidden>
+                <p class="details__lead">Brève description : objectif et utilité du projet, en langage clair pour tout le monde.</p>
+                <dl class="details__meta">
+                  <div><dt>Dates</dt><dd>avril – juin 2025</dd></div>
+                  <div><dt>Cadre</dt><dd>Stage de S4</dd></div>
+                  <div><dt>Équipe</dt><dd>X personnes</dd></div>
+                  <div><dt>Mon rôle</dt><dd>…</dd></div>
+                </dl>
+                <h4>Fonctionnalités principales</h4>
+                <ol class="details__tracklist">
+                  <li>Fonctionnalité 1</li>
+                  <li>Fonctionnalité 2</li>
+                  <li>Fonctionnalité 3</li>
+                </ol>
+                <h4>Technologies</h4>
+                <ul class="chips"><li>Langage</li><li>Framework</li><li>Outil de test</li></ul>
+                <h4>Défis &amp; solutions</h4>
+                <p>Un défi technique rencontré et la solution apportée.</p>
+                <div class="details__links">
+                  <a class="btn btn--primary btn--sm" href="#" target="_blank" rel="noopener">Voir la démo</a>
+                  <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Code sur GitHub</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- ===== Projet 2 ===== -->
+            <li class="track" data-hue="175">
+              <button class="track__btn" type="button" aria-haspopup="dialog">
+                <span class="track__num"><span class="track__index">2</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
+                <span class="track__main">
+                  <span class="cover cover--sm" aria-hidden="true">P2</span>
+                  <span>
+                    <span class="track__title">Nom du projet 2</span>
+                    <span class="track__artist">Projet universitaire · Équipe de 4</span>
+                  </span>
+                </span>
+                <span class="track__album col-hide">SAÉ BUT 2</span>
+                <span class="track__tags col-hide-sm">Techno · Techno</span>
+                <span class="track__time">2024</span>
+              </button>
+
+              <div class="track__details" hidden>
+                <p class="details__lead">Brève description : objectif et utilité du projet.</p>
+                <dl class="details__meta">
+                  <div><dt>Dates</dt><dd>…</dd></div>
+                  <div><dt>Cadre</dt><dd>Projet universitaire</dd></div>
+                  <div><dt>Équipe</dt><dd>4 personnes</dd></div>
+                  <div><dt>Mon rôle</dt><dd>…</dd></div>
+                </dl>
+                <h4>Fonctionnalités principales</h4>
+                <ol class="details__tracklist"><li>Fonctionnalité 1</li><li>Fonctionnalité 2</li></ol>
+                <h4>Technologies</h4>
+                <ul class="chips"><li>Langage</li><li>Framework</li></ul>
+                <div class="details__links">
+                  <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Code sur GitHub</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- ===== Projet 3 ===== -->
+            <li class="track" data-hue="320">
+              <button class="track__btn" type="button" aria-haspopup="dialog">
+                <span class="track__num"><span class="track__index">3</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
+                <span class="track__main">
+                  <span class="cover cover--sm" aria-hidden="true">P3</span>
+                  <span>
+                    <span class="track__title">Nom du projet 3</span>
+                    <span class="track__artist">Projet personnel</span>
+                  </span>
+                </span>
+                <span class="track__album col-hide">Perso</span>
+                <span class="track__tags col-hide-sm">Techno · Techno</span>
+                <span class="track__time">2025</span>
+              </button>
+
+              <div class="track__details" hidden>
+                <p class="details__lead">Brève description : objectif et utilité du projet.</p>
+                <dl class="details__meta">
+                  <div><dt>Dates</dt><dd>…</dd></div>
+                  <div><dt>Cadre</dt><dd>Projet personnel</dd></div>
+                  <div><dt>Équipe</dt><dd>Seul</dd></div>
+                </dl>
+                <h4>Fonctionnalités principales</h4>
+                <ol class="details__tracklist"><li>Fonctionnalité 1</li><li>Fonctionnalité 2</li></ol>
+                <h4>Technologies</h4>
+                <ul class="chips"><li>Langage</li><li>Outil</li></ul>
+                <div class="details__links">
+                  <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Code sur GitHub</a>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 · COMPÉTENCES (table de mixage) ============ -->
+    <section class="section" id="competences" data-track="Compétences" data-hue="200" aria-labelledby="titre-competences">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Piste 03 · Table de mixage</p>
+          <h2 id="titre-competences">Compétences</h2>
+          <p class="section__intro">Un résumé rapide de ce que je sais faire.</p>
+        </header>
+
+        <div class="mixer">
+          <article class="channel" style="--h:275">
+            <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Langages</h3>
+            <ul class="chips"><li>Java</li><li>Python</li><li>C</li><li>SQL</li></ul>
+          </article>
+          <article class="channel" style="--h:175">
+            <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Web</h3>
+            <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li></ul>
+          </article>
+          <article class="channel" style="--h:320">
+            <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Outils</h3>
+            <ul class="chips"><li>Git</li><li>Linux</li><li>Docker</li></ul>
+          </article>
+          <article class="channel" style="--h:245">
+            <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Savoir-être</h3>
+            <ul class="chips"><li>Travail en équipe</li><li>Gestion de projet</li><li>Autonomie</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 · PARCOURS (discographie) ============ -->
+    <section class="section" id="parcours" data-track="Parcours" data-hue="245" aria-labelledby="titre-parcours">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Piste 04 · Discographie</p>
+          <h2 id="titre-parcours">Parcours</h2>
+        </header>
+
+        <ol class="disco">
+          <li class="disco__item" style="--h:275">
+            <span class="disco__year">2026</span>
+            <div class="disco__card">
+              <h3>BUT Informatique — 3<sup>e</sup> année</h3>
+              <p class="disco__where">IUT de … · Parcours …</p>
+              <p>Ce que j'y apprends, en une phrase.</p>
+            </div>
+          </li>
+          <li class="disco__item" style="--h:175">
+            <span class="disco__year">2025</span>
+            <div class="disco__card">
+              <h3>Stage de S4</h3>
+              <p class="disco__where">Entreprise · Ville</p>
+              <p>Missions principales, en une phrase.</p>
+            </div>
+          </li>
+          <li class="disco__item" style="--h:320">
+            <span class="disco__year">2023</span>
+            <div class="disco__card">
+              <h3>Baccalauréat …</h3>
+              <p class="disco__where">Lycée … · Ville</p>
+              <p>Spécialités, mention.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 05 · VEILLE (podcasts) ============ -->
+    <section class="section" id="veille" data-track="Veille" data-hue="320" aria-labelledby="titre-veille">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Piste 05 · Podcasts</p>
+          <h2 id="titre-veille">Veille informatique</h2>
+          <p class="section__intro">Ce que je suis, ce que je lis et ce que j'en retiens.</p>
+        </header>
+
+        <div class="episodes">
+          <article class="episode" style="--h:320">
+            <span class="cover cover--md" aria-hidden="true">Ép.1</span>
+            <div>
+              <p class="episode__meta">Épisode 01 · Date · 5 min de lecture</p>
+              <h3 class="episode__title">Titre d'un article de veille</h3>
+              <p>Résumé en deux lignes de ce que j'ai appris et pourquoi c'est intéressant.</p>
+            </div>
+          </article>
+          <article class="episode" style="--h:200">
+            <span class="cover cover--md" aria-hidden="true">Ép.2</span>
+            <div>
+              <p class="episode__meta">Épisode 02 · Date · 4 min de lecture</p>
+              <h3 class="episode__title">Titre d'un article de veille</h3>
+              <p>Résumé en deux lignes.</p>
+            </div>
+          </article>
+          <article class="episode" style="--h:275">
+            <span class="cover cover--md" aria-hidden="true">Ép.3</span>
+            <div>
+              <p class="episode__meta">Mes sources</p>
+              <h3 class="episode__title">Ce que je suis au quotidien</h3>
+              <p>Sites, newsletters, chaînes, podcasts…</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · CONTACT (bonus track) ============ -->
+    <section class="section" id="contact" data-track="Contact" data-hue="275" aria-labelledby="titre-contact">
+      <div class="container">
+        <header class="section__head">
+          <p class="kicker">Piste 06 · Bonus track</p>
+          <h2 id="titre-contact">Contact</h2>
+        </header>
+
+        <div class="contact">
+          <div class="contact__intro">
+            <!-- TODO contenu : message d'accueil -->
+            <p class="lead">Un projet, un stage, une question ? Écrivez-moi, je réponds rapidement.</p>
+            <ul class="contact__links">
+              <li><a href="mailto:prenom.nom@exemple.fr"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>prenom.nom@exemple.fr</a></li>
+              <li><a href="https://github.com/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a></li>
+              <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a></li>
+              <li><a href="assets/cv.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Télécharger mon CV (PDF)</a></li>
+            </ul>
+          </div>
+
+          <!-- Formulaire : remplacer VOTRE_ID par l'identifiant Formspree (voir README) -->
+          <form class="form" action="https://formspree.io/f/VOTRE_ID" method="POST" novalidate>
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <p class="form__note">Vos données servent uniquement à vous répondre et ne sont jamais partagées.</p>
+            <button class="btn btn--primary" type="submit">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 21 3l-8.5 18-2-7.5z"/></svg>
+              Envoyer
+            </button>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Prénom Nom · Fait main en HTML, CSS &amp; JavaScript.</p>
+      <p class="footer__wink">Aucune piste n'a été compressée en MP3 pendant la création de ce site.</p>
+    </div>
+  </footer>
+
+  <!-- ============ LECTEUR FIXE (menu flottant) ============ -->
+  <div class="player" role="region" aria-label="Lecteur de navigation">
+    <div class="player__now">
+      <span class="cover cover--xs player__cover" aria-hidden="true"></span>
+      <div class="player__info">
+        <p class="player__title" aria-live="polite">Intro</p>
+        <p class="player__artist">Prénom Nom</p>
+      </div>
+    </div>
+
+    <div class="player__center">
+      <div class="player__controls">
+        <button class="player__btn" type="button" data-action="prev" aria-label="Section précédente">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5v14L8 12z"/></svg>
+        </button>
+        <button class="player__btn player__btn--play" type="button" data-action="toggle" aria-pressed="false" aria-label="Mettre en pause les animations">
+          <svg class="icon icon--pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+          <svg class="icon icon--play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+        </button>
+        <button class="player__btn" type="button" data-action="next" aria-label="Section suivante">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      <div class="player__progress">
+        <span class="player__time player__time--cur">0:00</span>
+        <input class="player__seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Position dans la page">
+        <span class="player__time player__time--total">4:33</span>
+      </div>
+    </div>
+
+    <div class="player__extra">
+      <a class="player__btn" href="assets/cv.pdf" download aria-label="Télécharger mon CV">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+      </a>
+      <a class="player__btn" href="#accueil" aria-label="Revenir en haut de la page">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5m0 0-6 6m6-6 6 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ FICHE PROJET (modale) ============ -->
+  <dialog class="sheet" aria-labelledby="sheet-title">
+    <div class="sheet__inner">
+      <button class="sheet__close" type="button" aria-label="Fermer la fiche">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <header class="sheet__head">
+        <span class="cover cover--lg sheet__cover" aria-hidden="true"></span>
+        <div>
+          <p class="kicker sheet__artist"></p>
+          <h3 class="sheet__title" id="sheet-title"></h3>
+        </div>
+      </header>
+      <div class="sheet__body"></div>
+    </div>
+  </dialog>
+</body>
+</html>
