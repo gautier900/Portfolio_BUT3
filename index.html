@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- TODO contenu : adapter le titre et la description avec tes mots-clés (SEO) -->
-  <title>Prénom Nom — Portfolio · Étudiant BUT Informatique</title>
-  <meta name="description" content="Portfolio de Prénom Nom, étudiant en 3e année de BUT Informatique : projets, compétences, parcours et contact.">
-  <meta name="keywords" content="portfolio, BUT informatique, développeur, stage, alternance">
-  <meta name="author" content="Prénom Nom">
-  <meta property="og:title" content="Prénom Nom — Portfolio">
+  <title>Gautier Beley — Développeur Full Stack · Portfolio BUT Informatique</title>
+  <meta name="description" content="Portfolio de Gautier Beley, étudiant en 3e année de BUT Informatique à Belfort, développeur full stack (Java, JavaScript, API REST). Recherche un stage de janvier à avril 2027.">
+  <meta name="keywords" content="Gautier Beley, développeur full stack, Java, JavaScript, C#, API REST, automatisation de tests, stage informatique, BUT informatique, Belfort">
+  <meta name="author" content="Gautier Beley">
+  <meta property="og:title" content="Gautier Beley — Développeur Full Stack">
   <meta property="og:description" content="Étudiant en 3e année de BUT Informatique. Découvrez ma playlist de projets.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -26,8 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
+  <!-- Styles du site + Tailwind (src/index.css importe css/style.css) -->
+  <link rel="stylesheet" href="/src/index.css">
+  <!-- Interactions (js/main.js) + composants React -->
+  <script type="module" src="/src/main.tsx"></script>
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -37,7 +38,7 @@
     <div class="header__inner">
       <a class="logo" href="#accueil" aria-label="Retour à l'accueil">
         <span class="logo__disc" aria-hidden="true"></span>
-        <span class="logo__text">Prénom Nom</span>
+        <span class="logo__text">Gautier Beley</span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
@@ -72,19 +73,18 @@
 
       <div class="container hero__inner">
         <div class="hero__art" aria-hidden="true">
-          <div class="vinyl"><span class="vinyl__label">PN</span></div>
+          <div class="vinyl"><span class="vinyl__label">GB</span></div>
           <div class="sleeve">
-            <span class="sleeve__title">Prénom<br>Nom</span>
+            <span class="sleeve__title">Gautier<br>Beley</span>
             <span class="sleeve__sub">BUT Info · Vol. 3</span>
           </div>
         </div>
 
         <div class="hero__text">
-          <p class="kicker">Album · Sortie 2026</p>
-          <h1 class="hero__title" id="hero-titre">Prénom <em>Nom</em></h1>
-          <!-- TODO contenu : une phrase d'accroche claire, sans jargon -->
-          <p class="hero__lead">Étudiant en 3<sup>e</sup> année de <strong>BUT Informatique</strong>. Phrase d'accroche à venir : ce que je fais, ce que je cherche (stage, alternance…).</p>
-          <p class="hero__meta">6 pistes · <span class="hl">À la recherche d'un stage</span></p>
+          <p class="kicker">Album · Développeur Full Stack</p>
+          <h1 class="hero__title" id="hero-titre">Gautier <em>Beley</em></h1>
+          <p class="hero__lead">Je conçois des applications web, de l'API jusqu'à l'interface. Étudiant en 3<sup>e</sup> année de <strong>BUT Informatique</strong> à Belfort.</p>
+          <p class="hero__meta">6 pistes · <span class="hl">Je cherche un stage de janvier à avril 2027</span></p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#projets">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
@@ -109,22 +109,19 @@
 
         <div class="about">
           <div class="about__photo">
-            <!-- TODO contenu : remplacer par <img src="assets/photo.webp" alt="Photo de Prénom Nom" width="480" height="480" loading="lazy"> -->
-            <div class="placeholder-photo" role="img" aria-label="Emplacement de la photo">
-              <span>Ta photo ici</span>
-            </div>
+            <img src="assets/photo.webp" alt="Portrait de Gautier Beley" width="480" height="716" loading="lazy" decoding="async">
           </div>
 
           <div class="about__text">
-            <!-- TODO contenu : texte à la 1re personne, ton sérieux, un clin d'œil possible -->
-            <p class="lead">Premier paragraphe essentiel : qui je suis en deux ou trois phrases, ce qui m'anime dans l'informatique.</p>
-            <p>Deuxième paragraphe : une idée par paragraphe, l'idée principale au début. Ce que j'aime construire, comment je travaille.</p>
-            <p>Troisième paragraphe : en dehors du code (musique, cinéma…), et un petit clin d'œil sans en faire trop.</p>
+            <p class="lead">Je m'appelle Gautier, je suis en 3<sup>e</sup> année de <strong>BUT Informatique</strong> à l'IUT Nord Franche-Comté, à Belfort. Je me spécialise dans le <strong>développement full stack</strong>, avec un faible pour la conception d'API.</p>
+            <p>Ce qui me plaît, c'est de résoudre des problèmes complexes : faire jouer une intelligence artificielle, faire circuler les données d'une boutique entre le serveur et l'interface, ou automatiser des tests pour qu'une application reste fiable. J'aime allier rigueur technique et créativité, seul comme en équipe.</p>
+            <p>En dehors du code, je fais de la musculation, je regarde beaucoup de thrillers et de films à énigme, et j'écoute énormément de rap, d'où ce site en forme de playlist. Les pochettes qui défilent sur l'accueil ? Ce sont mes vrais albums du moment.</p>
 
             <ul class="facts">
-              <li><span class="facts__label">Formation</span><span>BUT Informatique · IUT de …</span></li>
-              <li><span class="facts__label">Recherche</span><span>Stage de S6 · à partir de …</span></li>
-              <li><span class="facts__label">Localisation</span><span>Ville, mobilité …</span></li>
+              <li><span class="facts__label">Formation</span><span>BUT Informatique · IUT Nord Franche-Comté (Belfort)</span></li>
+              <li><span class="facts__label">Recherche</span><span>Stage de 10 à 14 semaines · janvier – avril 2027</span></li>
+              <li><span class="facts__label">Localisation</span><span>Territoire de Belfort (90) · permis B, véhiculé</span></li>
+              <li><span class="facts__label">Langues</span><span>Anglais B2 · Espagnol A2</span></li>
             </ul>
           </div>
         </div>
@@ -137,7 +134,7 @@
         <header class="section__head">
           <p class="kicker">Piste 02 · Playlist</p>
           <h2 id="titre-projets">Projets</h2>
-          <p class="section__intro">Mes meilleurs projets. Cliquez sur un titre pour ouvrir sa fiche complète.</p>
+          <p class="section__intro">Mon stage, un projet personnel et deux projets universitaires. Cliquez sur un titre pour ouvrir sa fiche complète.</p>
         </header>
 
         <div class="playlist" role="region" aria-label="Liste des projets">
@@ -146,111 +143,157 @@
           </div>
 
           <ol class="playlist__list">
-            <!-- ===== Projet 1 : le stage (obligatoire) ===== -->
+            <!-- ===== Projet 1 : stage de S4 chez APRR ===== -->
             <li class="track" data-hue="275">
               <button class="track__btn" type="button" aria-haspopup="dialog">
                 <span class="track__num"><span class="track__index">1</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
                 <span class="track__main">
                   <span class="cover cover--sm" aria-hidden="true">S4</span>
                   <span>
-                    <span class="track__title">Nom du projet de stage <span class="badge">Single</span></span>
-                    <span class="track__artist">Stage · Entreprise</span>
+                    <span class="track__title"><span class="track__name">Automatisation des tests de MAESTRO</span> <span class="badge">Single</span></span>
+                    <span class="track__artist">Stage · APRR (groupe Eiffage)</span>
                   </span>
                 </span>
-                <span class="track__album col-hide">Stage de S4</span>
-                <span class="track__tags col-hide-sm">Techno · Techno</span>
-                <span class="track__time">2025</span>
+                <span class="track__album col-hide">Stage de BUT 2</span>
+                <span class="track__tags col-hide-sm">C# · .NET · Selenium</span>
+                <span class="track__time">2026</span>
               </button>
 
               <div class="track__details" hidden>
-                <p class="details__lead">Brève description : objectif et utilité du projet, en langage clair pour tout le monde.</p>
+                <p class="details__lead">Pendant mon stage chez APRR, j'ai automatisé les tests de l'application MAESTRO. Au lieu de vérifier chaque évolution à la main, des scénarios rejouent automatiquement les actions des utilisateurs et signalent tout ce qui ne fonctionne plus.</p>
                 <dl class="details__meta">
-                  <div><dt>Dates</dt><dd>avril – juin 2025</dd></div>
-                  <div><dt>Cadre</dt><dd>Stage de S4</dd></div>
-                  <div><dt>Équipe</dt><dd>X personnes</dd></div>
-                  <div><dt>Mon rôle</dt><dd>…</dd></div>
+                  <div><dt>Dates</dt><dd>avril – juin 2026</dd></div>
+                  <div><dt>Cadre</dt><dd>Stage de BUT 2</dd></div>
+                  <div><dt>Entreprise</dt><dd>APRR · groupe Eiffage</dd></div>
+                  <div><dt>Mon rôle</dt><dd>Stagiaire en automatisation de tests</dd></div>
                 </dl>
-                <h4>Fonctionnalités principales</h4>
+                <h4>Missions principales</h4>
                 <ol class="details__tracklist">
-                  <li>Fonctionnalité 1</li>
-                  <li>Fonctionnalité 2</li>
-                  <li>Fonctionnalité 3</li>
+                  <li>Développement de tests fonctionnels automatisés, sur le web et sur le bureau, en C# / .NET avec Selenium</li>
+                  <li>Création et suivi des campagnes de tests dans Azure DevOps (Test Plans)</li>
+                  <li>Configuration de pipelines CI/CD en YAML, avec analyse de la qualité du code par SonarQube</li>
+                  <li>Tests et validation des évolutions de MAESTRO</li>
+                  <li>Maintenance, optimisation du code et rédaction de la documentation technique</li>
                 </ol>
                 <h4>Technologies</h4>
-                <ul class="chips"><li>Langage</li><li>Framework</li><li>Outil de test</li></ul>
-                <h4>Défis &amp; solutions</h4>
-                <p>Un défi technique rencontré et la solution apportée.</p>
-                <div class="details__links">
-                  <a class="btn btn--primary btn--sm" href="#" target="_blank" rel="noopener">Voir la démo</a>
-                  <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Code sur GitHub</a>
-                </div>
+                <ul class="chips"><li>C#</li><li>.NET</li><li>Selenium</li><li>Azure DevOps</li><li>YAML</li><li>SonarQube</li><li>Git</li></ul>
+                <p class="details__note">Projet réalisé en entreprise : le code est confidentiel.</p>
               </div>
             </li>
 
-            <!-- ===== Projet 2 ===== -->
+            <!-- ===== Projet 2 : UnderSpace (perso) ===== -->
             <li class="track" data-hue="175">
               <button class="track__btn" type="button" aria-haspopup="dialog">
                 <span class="track__num"><span class="track__index">2</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
                 <span class="track__main">
-                  <span class="cover cover--sm" aria-hidden="true">P2</span>
+                  <span class="cover cover--sm" aria-hidden="true">US</span>
                   <span>
-                    <span class="track__title">Nom du projet 2</span>
-                    <span class="track__artist">Projet universitaire · Équipe de 4</span>
-                  </span>
-                </span>
-                <span class="track__album col-hide">SAÉ BUT 2</span>
-                <span class="track__tags col-hide-sm">Techno · Techno</span>
-                <span class="track__time">2024</span>
-              </button>
-
-              <div class="track__details" hidden>
-                <p class="details__lead">Brève description : objectif et utilité du projet.</p>
-                <dl class="details__meta">
-                  <div><dt>Dates</dt><dd>…</dd></div>
-                  <div><dt>Cadre</dt><dd>Projet universitaire</dd></div>
-                  <div><dt>Équipe</dt><dd>4 personnes</dd></div>
-                  <div><dt>Mon rôle</dt><dd>…</dd></div>
-                </dl>
-                <h4>Fonctionnalités principales</h4>
-                <ol class="details__tracklist"><li>Fonctionnalité 1</li><li>Fonctionnalité 2</li></ol>
-                <h4>Technologies</h4>
-                <ul class="chips"><li>Langage</li><li>Framework</li></ul>
-                <div class="details__links">
-                  <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Code sur GitHub</a>
-                </div>
-              </div>
-            </li>
-
-            <!-- ===== Projet 3 ===== -->
-            <li class="track" data-hue="320">
-              <button class="track__btn" type="button" aria-haspopup="dialog">
-                <span class="track__num"><span class="track__index">3</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
-                <span class="track__main">
-                  <span class="cover cover--sm" aria-hidden="true">P3</span>
-                  <span>
-                    <span class="track__title">Nom du projet 3</span>
+                    <span class="track__title"><span class="track__name">UnderSpace</span> <span class="badge">En ligne</span></span>
                     <span class="track__artist">Projet personnel</span>
                   </span>
                 </span>
                 <span class="track__album col-hide">Perso</span>
-                <span class="track__tags col-hide-sm">Techno · Techno</span>
+                <span class="track__tags col-hide-sm">JavaScript · Three.js · Vite</span>
+                <span class="track__time">2026</span>
+              </button>
+
+              <div class="track__details" hidden>
+                <p class="details__lead">La galaxie du rap underground français : chaque rappeur est une planète. On voyage de l'une à l'autre, on découvre la page d'un artiste, ses projets et ses titres les plus écoutés, et on se fait recommander de nouveaux artistes.</p>
+                <dl class="details__meta">
+                  <div><dt>Année</dt><dd>2026</dd></div>
+                  <div><dt>Cadre</dt><dd>Projet personnel</dd></div>
+                  <div><dt>Contenu</dt><dd>151 artistes</dd></div>
+                  <div><dt>Mise en ligne</dt><dd>GitHub Pages</dd></div>
+                </dl>
+                <h4>Fonctionnalités principales</h4>
+                <ol class="details__tracklist">
+                  <li>Une galaxie en 3D ou en 2D, avec des planètes dessinées en temps réel (shaders WebGL)</li>
+                  <li>Une recherche instantanée et des filtres par style et par badge</li>
+                  <li>Des pages artistes avec un lecteur intégré, les projets et les singles</li>
+                  <li>« Six degrés » : la plus courte chaîne de featurings entre deux artistes, calculée sur un graphe</li>
+                  <li>Un blind test de 10 manches sur des extraits de 30 secondes</li>
+                  <li>Des recommandations personnalisées à partir d'un profil Deezer public</li>
+                  <li>Les nouvelles sorties récupérées automatiquement chaque vendredi (GitHub Actions et API Deezer)</li>
+                </ol>
+                <h4>Technologies</h4>
+                <ul class="chips"><li>JavaScript</li><li>Three.js</li><li>WebGL</li><li>Vite</li><li>Python</li><li>API Deezer</li><li>GitHub Actions</li></ul>
+                <h4>Défi &amp; solution</h4>
+                <p>Deezer n'accepte plus de nouvelles applications de connexion. Pour proposer quand même des recommandations personnalisées, le site lit le profil public de l'utilisateur à partir de son lien : aucun mot de passe n'est demandé et tout reste dans le navigateur.</p>
+                <div class="details__links">
+                  <a class="btn btn--primary btn--sm" href="https://gautier900.github.io/UnderSpace/" target="_blank" rel="noopener">Voir le site</a>
+                  <a class="btn btn--ghost btn--sm" href="https://github.com/gautier900/UnderSpace" target="_blank" rel="noopener">Code sur GitHub</a>
+                </div>
+              </div>
+            </li>
+
+            <!-- ===== Projet 3 : API RESTful (SAÉ) ===== -->
+            <li class="track" data-hue="320">
+              <button class="track__btn" type="button" aria-haspopup="dialog">
+                <span class="track__num"><span class="track__index">3</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
+                <span class="track__main">
+                  <span class="cover cover--sm" aria-hidden="true">API</span>
+                  <span>
+                    <span class="track__title"><span class="track__name">API de gestion d'une boutique</span></span>
+                    <span class="track__artist">Projet universitaire · Équipe de 5</span>
+                  </span>
+                </span>
+                <span class="track__album col-hide">BUT 2</span>
+                <span class="track__tags col-hide-sm">API REST · CRUD</span>
+                <span class="track__time">2026</span>
+              </button>
+
+              <div class="track__details" hidden>
+                <p class="details__lead">Une application complète pour gérer une boutique et ses prestataires. Je me suis occupé du back-end : l'API qui enregistre les données et les met à disposition de l'interface développée par le reste de l'équipe.</p>
+                <dl class="details__meta">
+                  <div><dt>Dates</dt><dd>sept. 2025 – mars 2026</dd></div>
+                  <div><dt>Cadre</dt><dd>Projet universitaire</dd></div>
+                  <div><dt>Équipe</dt><dd>5 personnes</dd></div>
+                  <div><dt>Mon rôle</dt><dd>Développement back-end</dd></div>
+                </dl>
+                <h4>Ce que j'ai réalisé</h4>
+                <ol class="details__tracklist">
+                  <li>Une API RESTful pour gérer la boutique et les prestataires</li>
+                  <li>La persistance des données, avec des opérations CRUD (créer, lire, modifier, supprimer)</li>
+                  <li>Des échanges fluides et performants avec l'équipe front-end</li>
+                </ol>
+                <h4>Technologies</h4>
+                <!-- TODO contenu : préciser le langage, le framework et la base de données utilisés -->
+                <ul class="chips"><li>API REST</li><li>CRUD</li><li>JSON</li></ul>
+              </div>
+            </li>
+
+            <!-- ===== Projet 4 : PuissanceX (SAÉ) ===== -->
+            <li class="track" data-hue="200">
+              <button class="track__btn" type="button" aria-haspopup="dialog">
+                <span class="track__num"><span class="track__index">4</span><span class="track__eq" aria-hidden="true"><i></i><i></i><i></i></span></span>
+                <span class="track__main">
+                  <span class="cover cover--sm" aria-hidden="true">PX</span>
+                  <span>
+                    <span class="track__title"><span class="track__name">PuissanceX : moteur de jeu et IA</span></span>
+                    <span class="track__artist">Projet universitaire</span>
+                  </span>
+                </span>
+                <span class="track__album col-hide">BUT 1</span>
+                <span class="track__tags col-hide-sm">Java · JavaFX · POO</span>
                 <span class="track__time">2025</span>
               </button>
 
               <div class="track__details" hidden>
-                <p class="details__lead">Brève description : objectif et utilité du projet.</p>
+                <p class="details__lead">Un jeu de plateau en Java avec une intelligence artificielle capable d'affronter le joueur. J'ai conçu le moteur de jeu et l'IA.</p>
                 <dl class="details__meta">
-                  <div><dt>Dates</dt><dd>…</dd></div>
-                  <div><dt>Cadre</dt><dd>Projet personnel</dd></div>
-                  <div><dt>Équipe</dt><dd>Seul</dd></div>
+                  <div><dt>Dates</dt><dd>avril – juin 2025</dd></div>
+                  <div><dt>Cadre</dt><dd>Projet universitaire</dd></div>
+                  <div><dt>Mon rôle</dt><dd>Moteur de jeu et IA</dd></div>
                 </dl>
-                <h4>Fonctionnalités principales</h4>
-                <ol class="details__tracklist"><li>Fonctionnalité 1</li><li>Fonctionnalité 2</li></ol>
+                <h4>Ce que j'ai réalisé</h4>
+                <ol class="details__tracklist">
+                  <li>La logique des tours et les conditions de victoire</li>
+                  <li>Une intelligence artificielle qui joue contre l'utilisateur</li>
+                  <li>L'intégration du framework Boardifier, dans le respect de la programmation orientée objet</li>
+                  <li>La synchronisation entre le moteur et l'interface graphique JavaFX</li>
+                </ol>
                 <h4>Technologies</h4>
-                <ul class="chips"><li>Langage</li><li>Outil</li></ul>
-                <div class="details__links">
-                  <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Code sur GitHub</a>
-                </div>
+                <ul class="chips"><li>Java</li><li>JavaFX</li><li>Boardifier</li><li>POO</li></ul>
               </div>
             </li>
           </ol>
@@ -271,22 +314,32 @@
           <article class="channel" style="--h:275">
             <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
             <h3>Langages</h3>
-            <ul class="chips"><li>Java</li><li>Python</li><li>C</li><li>SQL</li></ul>
+            <ul class="chips"><li>Java</li><li>JavaScript</li><li>C#</li><li>Python</li><li>C</li></ul>
           </article>
           <article class="channel" style="--h:175">
             <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-            <h3>Web</h3>
-            <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li></ul>
+            <h3>Web &amp; API</h3>
+            <ul class="chips"><li>HTML</li><li>CSS</li><li>API REST</li><li>Flask</li><li>Three.js</li><li>Vite</li></ul>
+          </article>
+          <article class="channel" style="--h:200">
+            <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Données &amp; interfaces</h3>
+            <ul class="chips"><li>MySQL</li><li>JavaFX</li><li>.NET</li></ul>
           </article>
           <article class="channel" style="--h:320">
             <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Tests &amp; DevOps</h3>
+            <ul class="chips"><li>Selenium</li><li>Azure DevOps</li><li>CI/CD (YAML)</li><li>SonarQube</li><li>GitHub Actions</li></ul>
+          </article>
+          <article class="channel" style="--h:190">
+            <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
             <h3>Outils</h3>
-            <ul class="chips"><li>Git</li><li>Linux</li><li>Docker</li></ul>
+            <ul class="chips"><li>Git</li><li>IntelliJ IDEA</li><li>PyCharm</li><li>DataGrip</li><li>Linux</li><li>Windows</li></ul>
           </article>
           <article class="channel" style="--h:245">
             <div class="channel__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
             <h3>Savoir-être</h3>
-            <ul class="chips"><li>Travail en équipe</li><li>Gestion de projet</li><li>Autonomie</li></ul>
+            <ul class="chips"><li>Adaptabilité</li><li>Persévérance</li><li>Travail en équipe</li><li>Esprit critique</li><li>Esprit d'analyse</li><li>Calme</li></ul>
           </article>
         </div>
       </div>
@@ -302,27 +355,27 @@
 
         <ol class="disco">
           <li class="disco__item" style="--h:275">
-            <span class="disco__year">2026</span>
+            <span class="disco__year">2027</span>
             <div class="disco__card">
-              <h3>BUT Informatique — 3<sup>e</sup> année</h3>
-              <p class="disco__where">IUT de … · Parcours …</p>
-              <p>Ce que j'y apprends, en une phrase.</p>
+              <h3>BUT Informatique</h3>
+              <p class="disco__where">IUT Nord Franche-Comté · Belfort · 2024 – 2027</p>
+              <p>En 3<sup>e</sup> année, je me spécialise dans le développement full stack et l'architecture d'API.</p>
             </div>
           </li>
           <li class="disco__item" style="--h:175">
-            <span class="disco__year">2025</span>
+            <span class="disco__year">2026</span>
             <div class="disco__card">
-              <h3>Stage de S4</h3>
-              <p class="disco__where">Entreprise · Ville</p>
-              <p>Missions principales, en une phrase.</p>
+              <h3>Stage en automatisation de tests</h3>
+              <p class="disco__where">APRR · groupe Eiffage · avril – juin 2026</p>
+              <p>Tests fonctionnels automatisés en C# / .NET, campagnes de tests sur Azure DevOps et pipelines CI/CD.</p>
             </div>
           </li>
           <li class="disco__item" style="--h:320">
-            <span class="disco__year">2023</span>
+            <span class="disco__year">2024</span>
             <div class="disco__card">
-              <h3>Baccalauréat …</h3>
-              <p class="disco__where">Lycée … · Ville</p>
-              <p>Spécialités, mention.</p>
+              <h3>Baccalauréat STI2D</h3>
+              <p class="disco__where">Spécialité SIN (Systèmes d'Information et Numérique)</p>
+              <p>Sciences et technologies de l'industrie et du développement durable, avec une spécialité tournée vers le numérique.</p>
             </div>
           </li>
         </ol>
@@ -339,11 +392,12 @@
         </header>
 
         <div class="episodes">
+          <!-- TODO contenu : deux sujets de veille réels (titre, date, ce que j'en retiens) -->
           <article class="episode" style="--h:320">
             <span class="cover cover--md" aria-hidden="true">Ép.1</span>
             <div>
               <p class="episode__meta">Épisode 01 · Date · 5 min de lecture</p>
-              <h3 class="episode__title">Titre d'un article de veille</h3>
+              <h3 class="episode__title">Titre d'un sujet de veille</h3>
               <p>Résumé en deux lignes de ce que j'ai appris et pourquoi c'est intéressant.</p>
             </div>
           </article>
@@ -351,16 +405,16 @@
             <span class="cover cover--md" aria-hidden="true">Ép.2</span>
             <div>
               <p class="episode__meta">Épisode 02 · Date · 4 min de lecture</p>
-              <h3 class="episode__title">Titre d'un article de veille</h3>
+              <h3 class="episode__title">Titre d'un sujet de veille</h3>
               <p>Résumé en deux lignes.</p>
             </div>
           </article>
           <article class="episode" style="--h:275">
-            <span class="cover cover--md" aria-hidden="true">Ép.3</span>
+            <span class="cover cover--md" aria-hidden="true">Src</span>
             <div>
               <p class="episode__meta">Mes sources</p>
               <h3 class="episode__title">Ce que je suis au quotidien</h3>
-              <p>Sites, newsletters, chaînes, podcasts…</p>
+              <p>Des newsletters et des communautés Reddit consacrées au développement.</p>
             </div>
           </article>
         </div>
@@ -377,12 +431,11 @@
 
         <div class="contact">
           <div class="contact__intro">
-            <!-- TODO contenu : message d'accueil -->
-            <p class="lead">Un projet, un stage, une question ? Écrivez-moi, je réponds rapidement.</p>
+            <p class="lead">Un stage entre janvier et avril 2027, un projet ou simplement une question ? Écrivez-moi, je vous réponds rapidement.</p>
             <ul class="contact__links">
-              <li><a href="mailto:prenom.nom@exemple.fr"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>prenom.nom@exemple.fr</a></li>
-              <li><a href="https://github.com/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a></li>
-              <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a></li>
+              <li><a href="mailto:gautier.beley06@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>gautier.beley06@gmail.com</a></li>
+              <li><a href="https://github.com/gautier900" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>github.com/gautier900</a></li>
+              <li><a href="https://www.linkedin.com/in/gautier-beley" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>linkedin.com/in/gautier-beley</a></li>
               <li><a href="assets/cv.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Télécharger mon CV (PDF)</a></li>
             </ul>
           </div>
@@ -415,7 +468,7 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p>© 2026 Prénom Nom · Fait main en HTML, CSS &amp; JavaScript.</p>
+      <p>© 2026 Gautier Beley · Fait main en HTML, CSS &amp; JavaScript.</p>
       <p class="footer__wink">Aucune piste n'a été compressée en MP3 pendant la création de ce site.</p>
     </div>
   </footer>
@@ -426,7 +479,7 @@
       <span class="cover cover--xs player__cover" aria-hidden="true"></span>
       <div class="player__info">
         <p class="player__title" aria-live="polite">Intro</p>
-        <p class="player__artist">Prénom Nom</p>
+        <p class="player__artist">Gautier Beley</p>
       </div>
     </div>
 

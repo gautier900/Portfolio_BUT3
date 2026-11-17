@@ -94,13 +94,22 @@
     const next = currentTheme() === 'dark' ? 'clair' : 'sombre';
     themeBtn.setAttribute('aria-label', `Passer en thème ${next}`);
   };
+  // Barre du navigateur (mobile) de la même couleur que le fond de la page
+  const themeMetas = $$('meta[name="theme-color"]');
+  const syncThemeColor = () => {
+    if (!root.dataset.theme) return; // pas de choix manuel : les balises suivent déjà le système
+    const bg = getComputedStyle(root).getPropertyValue('--bg').trim();
+    themeMetas.forEach((m) => m.setAttribute('content', bg));
+  };
   themeBtn.addEventListener('click', () => {
     const next = currentTheme() === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
     store.set('theme', next);
     updateThemeLabel();
+    syncThemeColor();
   });
   updateThemeLabel();
+  syncThemeColor();
 
   /* ---------- Menu mobile ---------- */
   const menuBtn = $('.menu-toggle');
@@ -159,8 +168,9 @@
 
   const maxScroll = () => Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
 
-  const updateProgress = () => {
-    const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll()));
+  const scrollRatio = () => Math.min(1, Math.max(0, window.scrollY / maxScroll()));
+
+  const updateProgress = (ratio = scrollRatio()) => {
     if (!seeking) seek.value = Math.round(ratio * 1000);
     seek.style.setProperty('--p', `${ratio * 100}%`);
     timeCur.textContent = fmt(ratio * TOTAL_SECONDS);
@@ -172,8 +182,12 @@
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      setCurrent(findCurrent());
-      updateProgress();
+      // Toutes les lectures de mise en page d'abord, puis les écritures :
+      // évite de forcer un recalcul de la page à chaque image.
+      const idx = findCurrent();
+      const ratio = scrollRatio();
+      setCurrent(idx);
+      updateProgress(ratio);
       ticking = false;
     });
   };

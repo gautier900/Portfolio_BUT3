@@ -1,0 +1,128 @@
+/* =========================================================
+   Point d'entrée CSS : feuille du site + Tailwind (pour shadcn / Skiper UI)
+   ========================================================= */
+
+/* Ordre des couches : la feuille du site passe après la base Tailwind
+   mais avant les utilitaires, pour que les classes Tailwind des composants
+   l'emportent sur les styles globaux du site (h2, a, button, ul…).
+   `islands` remet à zéro ces styles globaux, uniquement dans les îlots React. */
+@layer theme, base, site, islands, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+/* Pas de preflight (tailwindcss/preflight.css) : ce reset modifierait l'affichage du site,
+   qui a déjà sa propre base dans css/style.css. */
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "tw-animate-css";
+@import "../css/style.css" layer(site);
+
+/* `.container` est une classe du site ; l'utilitaire Tailwind du même nom
+   lui ajouterait des max-width par point de rupture. */
+@source not inline("container");
+
+/* Variante dark: des composants, calée sur le thème du site :
+   data-theme="dark", ou thème système sombre sans choix manuel. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media not (prefers-color-scheme: light) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
+/* Couleurs shadcn branchées sur les variables du site : les composants suivent
+   automatiquement les thèmes clair (turquoise) et sombre (violet).
+   Attention : --accent, --muted, --border et --radius existent déjà dans le site
+   avec un autre sens que chez shadcn, ils ne sont donc pas redéfinis ici. */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--text);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--on-accent);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--text);
+  --color-destructive: #e5484d;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-body);
+}
+
+/* Couleur de bordure par défaut des composants (rôle normalement tenu par le preflight).
+   Sans effet sur le site : ses bordures précisent toutes leur couleur. */
+@layer base {
+  *, ::before, ::after, ::backdrop {
+    border-color: var(--color-border);
+  }
+}
+
+/* Reset Tailwind (preflight) limité aux îlots React (data-island) :
+   les composants shadcn / Skiper UI sont dessinés pour ce reset, et sans lui
+   ils hériteraient des styles globaux du site (liens soulignés, titres en
+   majuscules, marges entre paragraphes…). Le reste de la page n'est pas touché.
+   Les polices et couleurs du site restent héritées. */
+@layer islands {
+  :where([data-island]) :where(*, ::before, ::after) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+    border-color: var(--color-border);
+  }
+  :where([data-island]) :where(h1, h2, h3, h4, h5, h6) {
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: none;
+    color: inherit;
+  }
+  :where([data-island]) :where(a) {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  :where([data-island]) :where(b, strong) {
+    font-weight: bolder;
+    color: inherit;
+  }
+  :where([data-island]) :where(ol, ul, menu) {
+    list-style: none;
+  }
+  :where([data-island]) :where(img, svg, video, canvas, audio, iframe, embed, object) {
+    display: block;
+    vertical-align: middle;
+  }
+  :where([data-island]) :where(img, video) {
+    max-width: 100%;
+    height: auto;
+  }
+  :where([data-island]) :where(button, input, select, optgroup, textarea) {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 1;
+  }
+  :where([data-island]) :where(button, [role="button"]) {
+    cursor: pointer;
+  }
+  :where([data-island]) :where(textarea) {
+    resize: vertical;
+  }
+  :where([data-island]) :where([hidden]:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
