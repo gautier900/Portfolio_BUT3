@@ -1,5 +1,6 @@
 import { StrictMode, type ComponentType } from 'react';
 import { createRoot } from 'react-dom/client';
+import { ContactLinks } from '@/components/contact-links';
 
 /* =========================================================
    Îlots React : composants shadcn / Skiper UI posés dans la page HTML
@@ -15,7 +16,9 @@ import { createRoot } from 'react-dom/client';
         <div data-island="skiper40"></div>
       Props facultatives en JSON : <div data-island="skiper40" data-props='{"titre":"Projets"}'></div>
 */
-const islands: Record<string, ComponentType<any>> = {};
+const islands: Record<string, ComponentType<any>> = {
+  'contact-links': ContactLinks,
+};
 
 export function mountIslands() {
   document.querySelectorAll<HTMLElement>('[data-island]').forEach((el) => {

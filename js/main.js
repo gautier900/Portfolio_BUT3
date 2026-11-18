@@ -101,12 +101,31 @@
     const bg = getComputedStyle(root).getPropertyValue('--bg').trim();
     themeMetas.forEach((m) => m.setAttribute('content', bg));
   };
-  themeBtn.addEventListener('click', () => {
-    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  const applyTheme = (next) => {
     root.dataset.theme = next;
     store.set('theme', next);
     updateThemeLabel();
     syncThemeColor();
+  };
+  // Le nouveau thème se dévoile en cercle depuis le bouton (View Transitions,
+  // inspiré de l'Animated Theme Toggler de Magic UI). Sans l'API ou en mouvement
+  // réduit : changement immédiat.
+  themeBtn.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    if (!document.startViewTransition || reducedMotion) { applyTheme(next); return; }
+    const r = themeBtn.getBoundingClientRect();
+    const x = r.left + r.width / 2;
+    const y = r.top + r.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    root.classList.add('is-theme-switching');
+    const transition = document.startViewTransition(() => applyTheme(next));
+    transition.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 650, easing: 'cubic-bezier(.2, .7, .2, 1)', pseudoElement: '::view-transition-new(root)' },
+      );
+    }).catch(() => {});
+    transition.finished.finally(() => root.classList.remove('is-theme-switching'));
   });
   updateThemeLabel();
   syncThemeColor();
@@ -131,7 +150,9 @@
   /* ---------- Sections = pistes ---------- */
   const sections = $$('main > section[id]');
   const navLinks = $$('.nav__link');
-  const playerTitle = $('.player__title');
+  // Zone annoncée aux lecteurs d'écran (texte brut) et titre visible (animé par js/effects.js)
+  const playerTitle = $('.player__live');
+  const playerTitleVis = $('.player__title-vis');
   const playerCover = $('.player__cover');
   let current = 0;
 
@@ -140,7 +161,10 @@
     current = i;
     const s = sections[i];
     const n = String(i).padStart(2, '0');
-    playerTitle.textContent = i === 0 ? s.dataset.track : `${n} · ${s.dataset.track}`;
+    const label = i === 0 ? s.dataset.track : `${n} · ${s.dataset.track}`;
+    playerTitle.textContent = label;
+    playerTitleVis.textContent = label;
+    document.dispatchEvent(new CustomEvent('fx:track', { detail: { index: i, label, hue: s.dataset.hue || 18 } }));
     playerCover.style.setProperty('--h', s.dataset.hue || 18);
     playerCover.textContent = i === 0 ? '▶' : n;
     navLinks.forEach((a) => {
@@ -230,6 +254,8 @@
     playBtn.setAttribute('aria-pressed', String(paused));
     playBtn.setAttribute('aria-label', paused ? 'Relancer les animations' : 'Mettre en pause les animations');
     store.set('paused', paused ? '1' : '0');
+    // js/effects.js met aussi en pause ses animations en boucle (GSAP, shader)
+    document.dispatchEvent(new CustomEvent('fx:paused', { detail: { paused } }));
   };
   playBtn.addEventListener('click', () => setPaused(!root.classList.contains('is-paused')));
   const savedPaused = store.get('paused');
@@ -261,6 +287,8 @@
     track.classList.add('is-open');
     sheet.showModal();
     $('.sheet__inner').scrollTop = 0;
+    // js/effects.js fait « voler » la pochette de la piste jusqu'à la fiche
+    document.dispatchEvent(new CustomEvent('fx:sheet-open', { detail: { track } }));
   };
 
   const closeSheet = () => sheet.close();
@@ -280,16 +308,8 @@
   });
 
   /* ---------- Apparition au défilement ---------- */
-  if ('IntersectionObserver' in window && !reducedMotion) {
-    const items = $$('.section__head, .about, .playlist, .channel, .disco__item, .episode, .contact');
-    items.forEach((el) => el.classList.add('reveal'));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach((el) => io.observe(el));
-  }
+  // Gérée par js/effects.js (GSAP ScrollTrigger.batch). Sans ce script,
+  // ou en mouvement réduit, tout le contenu reste simplement visible.
 
   /* ---------- Formulaire de contact ---------- */
   const form = $('.form');
@@ -317,7 +337,7 @@
 
     // Formspree pas encore configuré : on ouvre le logiciel de messagerie
     if (form.action.includes('VOTRE_ID')) {
-      const to = ($('.contact__links a[href^="mailto:"]') || {}).href || 'mailto:';
+      const to = ($('.contact a[href^="mailto:"]') || {}).href || 'mailto:';
       const subject = encodeURIComponent(`Portfolio — message de ${data.get('nom')}`);
       const body = encodeURIComponent(`${data.get('message')}\n\n${data.get('nom')} — ${data.get('email')}`);
       window.location.href = `${to}?subject=${subject}&body=${body}`;

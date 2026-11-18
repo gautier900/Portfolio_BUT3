@@ -20,6 +20,14 @@
       var t = localStorage.getItem('theme');
       if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
     } catch (e) {}
+    // Animations d'entrée (js/effects.js) : contenu masqué juste avant qu'elles démarrent.
+    // Sécurité : si le script n'a pas démarré au bout de 4 s, tout redevient visible.
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('fx');
+      setTimeout(function () {
+        if (!document.documentElement.classList.contains('fx-ready')) document.documentElement.classList.remove('fx');
+      }, 4000);
+    }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,10 +78,24 @@
     <section class="hero" id="accueil" data-track="Intro" data-hue="275" aria-labelledby="hero-titre">
       <!-- Mur de pochettes qui défilent en fond (généré par js/main.js) -->
       <div class="hero__wall" aria-hidden="true"></div>
+      <!-- Fond « vinyle iridescent » (shader WebGL dessiné par js/effects.js) -->
+      <canvas class="hero__shader" aria-hidden="true"></canvas>
 
       <div class="container hero__inner">
         <div class="hero__art" aria-hidden="true">
+          <svg class="vinyl-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="vinyl-ring-path" d="M50,50 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+            <text><textPath href="#vinyl-ring-path" textLength="285">Gautier Beley • Développeur full stack • Face A • 2026 • </textPath></text>
+          </svg>
           <div class="vinyl"><span class="vinyl__label">GB</span></div>
+          <!-- Bras de lecture (inspiré du Music Player de Componentry) -->
+          <svg class="tonearm" viewBox="0 0 40 70" aria-hidden="true">
+            <rect class="tonearm__weight" x="30" y="-3.5" width="6" height="5" rx="1.2"/>
+            <path class="tonearm__arm" d="M33 5 L33 12 Q33 20 26 30 L9.5 57"/>
+            <rect class="tonearm__head" x="5" y="55" width="7" height="9" rx="1.5" transform="rotate(34 8.5 59.5)"/>
+            <circle class="tonearm__base" cx="33" cy="5" r="4.6"/>
+            <circle class="tonearm__pin" cx="33" cy="5" r="1.6"/>
+          </svg>
           <div class="sleeve">
             <span class="sleeve__title">Gautier<br>Beley</span>
             <span class="sleeve__sub">BUT Info · Vol. 3</span>
@@ -82,7 +104,7 @@
 
         <div class="hero__text">
           <p class="kicker">Album · Développeur Full Stack</p>
-          <h1 class="hero__title" id="hero-titre">Gautier <em>Beley</em></h1>
+          <h1 class="hero__title" id="hero-titre"><span class="hero__line"><span class="hero__word">Gautier</span></span> <span class="hero__line"><em class="hero__word">Beley</em></span></h1>
           <p class="hero__lead">Je conçois des applications web, de l'API jusqu'à l'interface. Étudiant en 3<sup>e</sup> année de <strong>BUT Informatique</strong> à Belfort.</p>
           <p class="hero__meta">6 pistes · <span class="hl">Je cherche un stage de janvier à avril 2027</span></p>
           <div class="hero__actions">
@@ -99,10 +121,22 @@
       </div>
     </section>
 
+    <!-- Bandeau « tracklist » : sa vitesse suit celle du défilement (js/effects.js) -->
+    <div class="band" aria-hidden="true">
+      <div class="band__row">
+        <span class="band__item">À propos</span><span class="band__dot">●</span>
+        <span class="band__item band__item--outline">Projets</span><span class="band__dot">●</span>
+        <span class="band__item">Compétences</span><span class="band__dot">●</span>
+        <span class="band__item band__item--outline">Parcours</span><span class="band__dot">●</span>
+        <span class="band__item">Veille</span><span class="band__dot">●</span>
+        <span class="band__item band__item--outline">Contact</span><span class="band__dot">●</span>
+      </div>
+    </div>
+
     <!-- ============ 01 · À PROPOS ============ -->
     <section class="section" id="a-propos" data-track="À propos" data-hue="175" aria-labelledby="titre-a-propos">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-num="01">
           <p class="kicker">Piste 01 · Notes de pochette</p>
           <h2 id="titre-a-propos">À propos</h2>
         </header>
@@ -131,7 +165,7 @@
     <!-- ============ 02 · PROJETS (playlist) ============ -->
     <section class="section" id="projets" data-track="Projets" data-hue="275" aria-labelledby="titre-projets">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-num="02">
           <p class="kicker">Piste 02 · Playlist</p>
           <h2 id="titre-projets">Projets</h2>
           <p class="section__intro">Mon stage, un projet personnel et deux projets universitaires. Cliquez sur un titre pour ouvrir sa fiche complète.</p>
@@ -304,7 +338,7 @@
     <!-- ============ 03 · COMPÉTENCES (table de mixage) ============ -->
     <section class="section" id="competences" data-track="Compétences" data-hue="200" aria-labelledby="titre-competences">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-num="03">
           <p class="kicker">Piste 03 · Table de mixage</p>
           <h2 id="titre-competences">Compétences</h2>
           <p class="section__intro">Un résumé rapide de ce que je sais faire.</p>
@@ -348,12 +382,13 @@
     <!-- ============ 04 · PARCOURS (discographie) ============ -->
     <section class="section" id="parcours" data-track="Parcours" data-hue="245" aria-labelledby="titre-parcours">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-num="04">
           <p class="kicker">Piste 04 · Discographie</p>
           <h2 id="titre-parcours">Parcours</h2>
         </header>
 
         <ol class="disco">
+          <li class="disco__progress" aria-hidden="true" role="presentation"></li>
           <li class="disco__item" style="--h:275">
             <span class="disco__year">2027</span>
             <div class="disco__card">
@@ -385,7 +420,7 @@
     <!-- ============ 05 · VEILLE (podcasts) ============ -->
     <section class="section" id="veille" data-track="Veille" data-hue="320" aria-labelledby="titre-veille">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-num="05">
           <p class="kicker">Piste 05 · Podcasts</p>
           <h2 id="titre-veille">Veille informatique</h2>
           <p class="section__intro">Ce que je suis, ce que je lis et ce que j'en retiens.</p>
@@ -424,7 +459,7 @@
     <!-- ============ 06 · CONTACT (bonus track) ============ -->
     <section class="section" id="contact" data-track="Contact" data-hue="275" aria-labelledby="titre-contact">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-num="06">
           <p class="kicker">Piste 06 · Bonus track</p>
           <h2 id="titre-contact">Contact</h2>
         </header>
@@ -432,12 +467,8 @@
         <div class="contact">
           <div class="contact__intro">
             <p class="lead">Un stage entre janvier et avril 2027, un projet ou simplement une question ? Écrivez-moi, je vous réponds rapidement.</p>
-            <ul class="contact__links">
-              <li><a href="mailto:gautier.beley06@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>gautier.beley06@gmail.com</a></li>
-              <li><a href="https://github.com/gautier900" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>github.com/gautier900</a></li>
-              <li><a href="https://www.linkedin.com/in/gautier-beley" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>linkedin.com/in/gautier-beley</a></li>
-              <li><a href="assets/cv.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>Télécharger mon CV (PDF)</a></li>
-            </ul>
+            <!-- Liens de contact : composant React (src/components/contact-links.tsx, effet Skiper UI skiper40) -->
+            <div data-island="contact-links"></div>
           </div>
 
           <!-- Formulaire : remplacer VOTRE_ID par l'identifiant Formspree (voir README) -->
@@ -467,6 +498,7 @@
   </main>
 
   <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 C0 0 360 0 720 0 S1440 0 1440 0 L1440 0 L0 0 Z"/></svg>
     <div class="container footer__inner">
       <p>© 2026 Gautier Beley · Fait main en HTML, CSS &amp; JavaScript.</p>
       <p class="footer__wink">Aucune piste n'a été compressée en MP3 pendant la création de ce site.</p>
@@ -478,9 +510,11 @@
     <div class="player__now">
       <span class="cover cover--xs player__cover" aria-hidden="true"></span>
       <div class="player__info">
-        <p class="player__title" aria-live="polite">Intro</p>
+        <p class="player__title"><span class="sr-only player__live" aria-live="polite">Intro</span><span class="player__title-vis" aria-hidden="true">Intro</span></p>
         <p class="player__artist">Gautier Beley</p>
       </div>
+      <!-- Ondes de lecture (inspirées de Skiper UI skiper25) -->
+      <span class="player__wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
     </div>
 
     <div class="player__center">

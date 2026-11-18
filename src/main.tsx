@@ -1,5 +1,7 @@
 // Interactions du site (lecteur, menu, fiches projet, formulaire), inchangées
 import '../js/main.js';
+// Effets GSAP (accueil, titres, apparitions…), inactifs en mouvement réduit
+import '../js/effects.js';
 
 // Composants React (shadcn / Skiper UI) : React n'est téléchargé
 // que si la page contient au moins un emplacement data-island.
