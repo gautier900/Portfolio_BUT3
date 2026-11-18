@@ -13,7 +13,7 @@ Le thème : le site est une **playlist**. La barre de lecture fixe en bas de l'�
 ```
 index.html          contenu de toutes les sections
 css/style.css       styles du site (thèmes clair et sombre, responsive)
-js/main.js          lecteur, menu, fiches projet, formulaire
+js/main.js          lecteur, menu, fiches projet, copie de l'adresse e-mail
 public/assets/      cv.pdf, favicon.svg, photo, pochettes… (copiés tels quels)
 src/index.css       point d'entrée CSS : importe css/style.css + Tailwind
 src/main.tsx        point d'entrée JS : importe js/main.js + les îlots React
@@ -71,14 +71,9 @@ Points à connaître :
 - Le reset de Tailwind (preflight) n'est appliqué qu'à l'intérieur des îlots : le reste de la page garde exactement son affichage.
 - Les composants Skiper UI marqués « Premium » nécessitent un accès payant.
 
-## Formulaire de contact
+## Contact
 
-GitHub Pages n'exécute pas de code serveur. Le formulaire passe donc par [Formspree](https://formspree.io) (gratuit) :
-
-1. Créer un formulaire sur Formspree.
-2. Remplacer `VOTRE_ID` dans l'attribut `action` du `<form>`.
-
-Tant que l'identifiant n'est pas renseigné, le formulaire ouvre le logiciel de messagerie du visiteur avec le message prérempli.
+Il n'y a pas de formulaire : GitHub Pages n'exécute pas de code serveur. La section Contact affiche l'adresse e-mail avec deux actions, « Écrire un e-mail » (lien `mailto:`) et « Copier l'adresse ». Pour changer d'adresse, modifier le bloc `.mailcard` dans `index.html`, attribut `data-copy` compris.
 
 ## Déployer sur GitHub Pages
 

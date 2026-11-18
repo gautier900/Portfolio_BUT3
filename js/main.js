@@ -254,7 +254,7 @@
     playBtn.setAttribute('aria-pressed', String(paused));
     playBtn.setAttribute('aria-label', paused ? 'Relancer les animations' : 'Mettre en pause les animations');
     store.set('paused', paused ? '1' : '0');
-    // js/effects.js met aussi en pause ses animations en boucle (GSAP, shader)
+    // js/effects.js met aussi en pause ses animations en boucle (GSAP)
     document.dispatchEvent(new CustomEvent('fx:paused', { detail: { paused } }));
   };
   playBtn.addEventListener('click', () => setPaused(!root.classList.contains('is-paused')));
@@ -312,58 +312,40 @@
   // ou en mouvement réduit, tout le contenu reste simplement visible.
 
   /* ---------- Formulaire de contact ---------- */
-  const form = $('.form');
-  const status = $('.form__status');
-  const setStatus = (msg, type) => {
-    status.textContent = msg;
-    status.className = `form__status${type ? ` is-${type}` : ''}`;
+  /* ---------- Contact : copier l'adresse e-mail ---------- */
+  const copyBtn = $('[data-copy]');
+  const copyLabel = $('[data-copy-label]');
+  const copyStatus = $('.mailcard__status');
+  const address = $('.mailcard__address');
+  let copyTimer;
+
+  const selectAddress = () => {
+    const range = document.createRange();
+    range.selectNodeContents(address);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
   };
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let firstInvalid = null;
-    $$('input, textarea', form).forEach((field) => {
-      const ok = field.checkValidity() && field.value.trim() !== '';
-      field.setAttribute('aria-invalid', String(!ok));
-      if (!ok && !firstInvalid) firstInvalid = field;
-    });
-    if (firstInvalid) {
-      setStatus('Merci de remplir correctement tous les champs.', 'error');
-      firstInvalid.focus();
-      return;
-    }
-
-    const data = new FormData(form);
-
-    // Formspree pas encore configuré : on ouvre le logiciel de messagerie
-    if (form.action.includes('VOTRE_ID')) {
-      const to = ($('.contact a[href^="mailto:"]') || {}).href || 'mailto:';
-      const subject = encodeURIComponent(`Portfolio — message de ${data.get('nom')}`);
-      const body = encodeURIComponent(`${data.get('message')}\n\n${data.get('nom')} — ${data.get('email')}`);
-      window.location.href = `${to}?subject=${subject}&body=${body}`;
-      setStatus('Votre logiciel de messagerie va s\'ouvrir pour envoyer le message.', 'ok');
-      return;
-    }
-
-    const btn = $('button[type="submit"]', form);
-    btn.disabled = true;
-    setStatus('Envoi en cours…');
+  copyBtn?.addEventListener('click', async () => {
+    clearTimeout(copyTimer);
     try {
-      const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(res.status);
-      form.reset();
-      $$('[aria-invalid]', form).forEach((f) => f.removeAttribute('aria-invalid'));
-      setStatus('Merci ! Votre message a bien été envoyé.', 'ok');
-    } catch (err) {
-      setStatus('Oups, l\'envoi a échoué. Vous pouvez m\'écrire directement par e-mail.', 'error');
-    } finally {
-      btn.disabled = false;
+      if (!navigator.clipboard) throw new Error('clipboard');
+      await navigator.clipboard.writeText(copyBtn.dataset.copy);
+      copyLabel.textContent = 'Adresse copiée';
+      copyStatus.textContent = 'Adresse copiée dans le presse-papiers.';
+      copyStatus.className = 'mailcard__status is-ok';
+      copyTimer = setTimeout(() => {
+        copyLabel.textContent = 'Copier l\'adresse';
+        copyStatus.textContent = '';
+      }, 2500);
+    } catch {
+      // Presse-papiers refusé : on sélectionne l'adresse pour une copie manuelle
+      selectAddress();
+      copyStatus.textContent = 'Copie impossible ici : l\'adresse est sélectionnée, faites Ctrl+C (ou ⌘+C).';
+      copyStatus.className = 'mailcard__status is-error';
     }
   });
-
-  $$('input, textarea', form).forEach((f) => f.addEventListener('input', () => {
-    if (f.getAttribute('aria-invalid') === 'true' && f.checkValidity()) f.setAttribute('aria-invalid', 'false');
-  }));
 
   /* ---------- Initialisation ---------- */
   playerTitle.textContent = '';

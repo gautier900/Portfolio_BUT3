@@ -13,7 +13,6 @@ import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { CustomEase } from 'gsap/CustomEase';
 import { CustomWiggle } from 'gsap/CustomWiggle';
-import { initHeroShader } from './hero-shader.js';
 
 const root = document.documentElement;
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -65,11 +64,9 @@ function init() {
      ACCUEIL
      ========================================================= */
   const hero = $('.hero');
-  const art = $('.hero__art');
   const vinyl = $('.vinyl');
   const tonearm = $('.tonearm');
   let heroOn = true;
-  let shader = null;
 
   ScrollTrigger.create({
     trigger: hero,
@@ -78,22 +75,8 @@ function init() {
     onToggle(self) {
       heroOn = self.isActive;
       hero.classList.toggle('is-off', !heroOn);
-      shader?.setActive(heroOn);
     },
   });
-
-  // Fond shader (C3) : ordinateur seulement, sinon les halos CSS restent
-  const canvas = $('.hero__shader');
-  if (canvas && !isMobile) {
-    shader = initHeroShader(canvas, hero, art);
-    if (shader) {
-      hero.classList.add('has-shader');
-      shader.setPaused(paused);
-      pauseHandlers.push((p) => shader.setPaused(p));
-      // Le vinyle finit sa sortie à 1,5 s : on recale le centre du fond
-      gsap.delayedCall(1.6, () => shader.remeasure());
-    }
-  }
 
   // Intro : les mots tombent sur le « temps », secousse à l'impact, kicker brouillé
   const kicker = $('.hero .kicker');

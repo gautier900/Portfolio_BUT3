@@ -12,16 +12,6 @@ const Icon = ({ children }: { children: ReactNode }) => (
 
 const LINKS: { href: string; label: string; icon: ReactNode; external?: boolean; download?: boolean }[] = [
   {
-    href: 'mailto:gautier.beley06@gmail.com',
-    label: 'gautier.beley06@gmail.com',
-    icon: (
-      <>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="m3 7 9 6 9-6" />
-      </>
-    ),
-  },
-  {
     href: 'https://github.com/gautier900',
     label: 'github.com/gautier900',
     external: true,

@@ -8,7 +8,7 @@
   <meta name="keywords" content="Gautier Beley, développeur full stack, Java, JavaScript, C#, API REST, automatisation de tests, stage informatique, BUT informatique, Belfort">
   <meta name="author" content="Gautier Beley">
   <meta property="og:title" content="Gautier Beley — Développeur Full Stack">
-  <meta property="og:description" content="Étudiant en 3e année de BUT Informatique. Découvrez ma playlist de projets.">
+  <meta property="og:description" content="Étudiant en 3e année de BUT Informatique. Stage chez APRR, UnderSpace, API REST : mes projets en playlist.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0e13" media="(prefers-color-scheme: dark)">
@@ -78,8 +78,6 @@
     <section class="hero" id="accueil" data-track="Intro" data-hue="275" aria-labelledby="hero-titre">
       <!-- Mur de pochettes qui défilent en fond (généré par js/main.js) -->
       <div class="hero__wall" aria-hidden="true"></div>
-      <!-- Fond « vinyle iridescent » (shader WebGL dessiné par js/effects.js) -->
-      <canvas class="hero__shader" aria-hidden="true"></canvas>
 
       <div class="container hero__inner">
         <div class="hero__art" aria-hidden="true">
@@ -148,7 +146,7 @@
 
           <div class="about__text">
             <p class="lead">Je m'appelle Gautier, je suis en 3<sup>e</sup> année de <strong>BUT Informatique</strong> à l'IUT Nord Franche-Comté, à Belfort. Je me spécialise dans le <strong>développement full stack</strong>, avec un faible pour la conception d'API.</p>
-            <p>Ce qui me plaît, c'est de résoudre des problèmes complexes : faire jouer une intelligence artificielle, faire circuler les données d'une boutique entre le serveur et l'interface, ou automatiser des tests pour qu'une application reste fiable. J'aime allier rigueur technique et créativité, seul comme en équipe.</p>
+            <p>Ce qui me plaît, c'est un problème concret à résoudre : faire jouer une intelligence artificielle, faire circuler les données d'une boutique entre le serveur et l'interface, ou automatiser des tests pour qu'une application reste fiable.</p>
             <p>En dehors du code, je fais de la musculation, je regarde beaucoup de thrillers et de films à énigme, et j'écoute énormément de rap, d'où ce site en forme de playlist. Les pochettes qui défilent sur l'accueil ? Ce sont mes vrais albums du moment.</p>
 
             <ul class="facts">
@@ -207,7 +205,7 @@
                   <li>Création et suivi des campagnes de tests dans Azure DevOps (Test Plans)</li>
                   <li>Configuration de pipelines CI/CD en YAML, avec analyse de la qualité du code par SonarQube</li>
                   <li>Tests et validation des évolutions de MAESTRO</li>
-                  <li>Maintenance, optimisation du code et rédaction de la documentation technique</li>
+                  <li>Maintenance du code de test et rédaction de la documentation technique</li>
                 </ol>
                 <h4>Technologies</h4>
                 <ul class="chips"><li>C#</li><li>.NET</li><li>Selenium</li><li>Azure DevOps</li><li>YAML</li><li>SonarQube</li><li>Git</li></ul>
@@ -233,6 +231,10 @@
 
               <div class="track__details" hidden>
                 <p class="details__lead">La galaxie du rap underground français : chaque rappeur est une planète. On voyage de l'une à l'autre, on découvre la page d'un artiste, ses projets et ses titres les plus écoutés, et on se fait recommander de nouveaux artistes.</p>
+                <div class="details__links">
+                  <a class="btn btn--primary btn--sm" href="https://gautier900.github.io/UnderSpace/" target="_blank" rel="noopener">Voir le site</a>
+                  <a class="btn btn--ghost btn--sm" href="https://github.com/gautier900/UnderSpace" target="_blank" rel="noopener">Code sur GitHub</a>
+                </div>
                 <dl class="details__meta">
                   <div><dt>Année</dt><dd>2026</dd></div>
                   <div><dt>Cadre</dt><dd>Projet personnel</dd></div>
@@ -253,10 +255,6 @@
                 <ul class="chips"><li>JavaScript</li><li>Three.js</li><li>WebGL</li><li>Vite</li><li>Python</li><li>API Deezer</li><li>GitHub Actions</li></ul>
                 <h4>Défi &amp; solution</h4>
                 <p>Deezer n'accepte plus de nouvelles applications de connexion. Pour proposer quand même des recommandations personnalisées, le site lit le profil public de l'utilisateur à partir de son lien : aucun mot de passe n'est demandé et tout reste dans le navigateur.</p>
-                <div class="details__links">
-                  <a class="btn btn--primary btn--sm" href="https://gautier900.github.io/UnderSpace/" target="_blank" rel="noopener">Voir le site</a>
-                  <a class="btn btn--ghost btn--sm" href="https://github.com/gautier900/UnderSpace" target="_blank" rel="noopener">Code sur GitHub</a>
-                </div>
               </div>
             </li>
 
@@ -277,7 +275,7 @@
               </button>
 
               <div class="track__details" hidden>
-                <p class="details__lead">Une application complète pour gérer une boutique et ses prestataires. Je me suis occupé du back-end : l'API qui enregistre les données et les met à disposition de l'interface développée par le reste de l'équipe.</p>
+                <p class="details__lead">Une application pour gérer une boutique et ses prestataires. Je me suis occupé du back-end : l'API qui enregistre les données et les met à disposition de l'interface développée par le reste de l'équipe.</p>
                 <dl class="details__meta">
                   <div><dt>Dates</dt><dd>sept. 2025 – mars 2026</dd></div>
                   <div><dt>Cadre</dt><dd>Projet universitaire</dd></div>
@@ -288,7 +286,7 @@
                 <ol class="details__tracklist">
                   <li>Une API RESTful pour gérer la boutique et les prestataires</li>
                   <li>La persistance des données, avec des opérations CRUD (créer, lire, modifier, supprimer)</li>
-                  <li>Des échanges fluides et performants avec l'équipe front-end</li>
+                  <li>La coordination avec l'équipe front-end, qui utilise l'API pour l'interface</li>
                 </ol>
                 <h4>Technologies</h4>
                 <!-- TODO contenu : préciser le langage, le framework et la base de données utilisés -->
@@ -323,7 +321,7 @@
                 <ol class="details__tracklist">
                   <li>La logique des tours et les conditions de victoire</li>
                   <li>Une intelligence artificielle qui joue contre l'utilisateur</li>
-                  <li>L'intégration du framework Boardifier, dans le respect de la programmation orientée objet</li>
+                  <li>L'intégration du framework Boardifier</li>
                   <li>La synchronisation entre le moteur et l'interface graphique JavaFX</li>
                 </ol>
                 <h4>Technologies</h4>
@@ -341,7 +339,7 @@
         <header class="section__head" data-num="03">
           <p class="kicker">Piste 03 · Table de mixage</p>
           <h2 id="titre-competences">Compétences</h2>
-          <p class="section__intro">Un résumé rapide de ce que je sais faire.</p>
+          <p class="section__intro">Les outils que j'ai utilisés en projet ou en stage.</p>
         </header>
 
         <div class="mixer">
@@ -394,7 +392,7 @@
             <div class="disco__card">
               <h3>BUT Informatique</h3>
               <p class="disco__where">IUT Nord Franche-Comté · Belfort · 2024 – 2027</p>
-              <p>En 3<sup>e</sup> année, je me spécialise dans le développement full stack et l'architecture d'API.</p>
+              <p>En 3<sup>e</sup> année, parcours Réalisation d'applications : conception, développement, validation.</p>
             </div>
           </li>
           <li class="disco__item" style="--h:175">
@@ -423,7 +421,7 @@
         <header class="section__head" data-num="05">
           <p class="kicker">Piste 05 · Podcasts</p>
           <h2 id="titre-veille">Veille informatique</h2>
-          <p class="section__intro">Ce que je suis, ce que je lis et ce que j'en retiens.</p>
+          <p class="section__intro">Les sources que je suis et ce que j'en retiens.</p>
         </header>
 
         <div class="episodes">
@@ -448,7 +446,7 @@
             <span class="cover cover--md" aria-hidden="true">Src</span>
             <div>
               <p class="episode__meta">Mes sources</p>
-              <h3 class="episode__title">Ce que je suis au quotidien</h3>
+              <h3 class="episode__title">Ce que je lis chaque jour</h3>
               <p>Des newsletters et des communautés Reddit consacrées au développement.</p>
             </div>
           </article>
@@ -471,27 +469,21 @@
             <div data-island="contact-links"></div>
           </div>
 
-          <!-- Formulaire : remplacer VOTRE_ID par l'identifiant Formspree (voir README) -->
-          <form class="form" action="https://formspree.io/f/VOTRE_ID" method="POST" novalidate>
-            <div class="field">
-              <label for="nom">Nom</label>
-              <input id="nom" name="nom" type="text" autocomplete="name" required>
+          <div class="mailcard">
+            <h3 class="mailcard__title">Par e-mail</h3>
+            <a class="mailcard__address" href="mailto:gautier.beley06@gmail.com">gautier.beley06@gmail.com</a>
+            <div class="mailcard__actions">
+              <a class="btn btn--primary" href="mailto:gautier.beley06@gmail.com?subject=Portfolio%20%E2%80%94%20contact">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 21 3l-8.5 18-2-7.5z"/></svg>
+                Écrire un e-mail
+              </a>
+              <button class="btn btn--ghost" type="button" data-copy="gautier.beley06@gmail.com">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+                <span data-copy-label>Copier l'adresse</span>
+              </button>
             </div>
-            <div class="field">
-              <label for="email">E-mail</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <p class="form__note">Vos données servent uniquement à vous répondre et ne sont jamais partagées.</p>
-            <button class="btn btn--primary" type="submit">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 21 3l-8.5 18-2-7.5z"/></svg>
-              Envoyer
-            </button>
-            <p class="form__status" role="status" aria-live="polite"></p>
-          </form>
+            <p class="mailcard__status" role="status" aria-live="polite"></p>
+          </div>
         </div>
       </div>
     </section>
@@ -500,7 +492,7 @@
   <footer class="footer">
     <svg class="footer__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 C0 0 360 0 720 0 S1440 0 1440 0 L1440 0 L0 0 Z"/></svg>
     <div class="container footer__inner">
-      <p>© 2026 Gautier Beley · Fait main en HTML, CSS &amp; JavaScript.</p>
+      <p>© 2026 Gautier Beley · Codé à la main en HTML, CSS &amp; JavaScript, avec quelques composants React.</p>
       <p class="footer__wink">Aucune piste n'a été compressée en MP3 pendant la création de ce site.</p>
     </div>
   </footer>
